@@ -1,0 +1,112 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Price Match Backend REST API",
+    "description": "API for Price Match",
+    "version": "1.0"
+  },
+  "produces": [
+    "application/json"
+  ],
+  "host": "localhost:3010",
+  "basePath": "/",
+  "paths": {
+    "/priceMatch": {
+      "get": {
+        "x-swagger-router-controller": "price",
+        "operationId": "getPrice",
+        "tags": ["/price"],
+        "description": "Gets the prices from different website.",
+        "parameters": [
+          {
+            "name": "productname",
+            "in": "query",
+            "description": "The product name which you want to get the price",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "description": "The model of the product",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Invalid request.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "200": {
+            "description": "Successful request.",
+            "schema": {
+              "$ref": "#/definitions/priceMatch"
+            }
+          }
+        }
+      }
+    },
+    "/weather":{
+      "get":{
+        "x-swagger-router-controller":"weather",
+        "operationId": "getWeather",
+        "tags":["/weather"], 
+        "parameters":[
+        {
+            "name": "city",
+            "in": "query",
+            "description": "The city you want to search",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses":{
+          "default":{
+            "description":"Invalid request.",
+            "schema":{
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "200": {
+            "description": "Successful request.",
+            "schema": {
+              "$ref": "#/definitions/weather"
+            }
+          }
+        }
+      }
+    }
+
+  },
+  "definitions": {
+    "Error": {
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "priceMatch": {
+      "type": "object",
+      "properties": {
+        "matchResult": {
+          "type": "string"
+        }
+      }
+    },
+    "weather": {
+      "type": "object",
+      "properties": {
+        "matchResult": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

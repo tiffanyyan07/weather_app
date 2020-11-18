@@ -1,0 +1,38 @@
+.logo {
+  padding-left: 25%;
+  padding-right: 25%;
+  max-width: 100%;
+  padding-top: 10%;
+}
+.input-group {
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-top: 2%;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+.ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+.ul li:hover {
+  background: #ddd;
+}
+.edit {
+  background-color: white;
+  color: black;
+  border: 2px solid #4caf50; /* Green */
+  margin: 25;
+}
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 25;
+}
+/*hover means it is focus*/
+.close:hover {
+  color: red;
+}
