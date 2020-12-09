@@ -1,0 +1,21 @@
+#docker-compose
+version: "3.8"
+services:
+  redis:
+    image: redis
+    container_name: cache
+    ports:
+      - "6379:6379"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: backend:tag
+    container_name: backend
+    ports:
+      - "3010:3010"
+    links:
+      - redis
+    environment:
+      - REDIS_URL=redis://cache

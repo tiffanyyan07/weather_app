@@ -1,0 +1,17 @@
+#docker-compose
+
+version: "3.8"
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: client
+    image: client:tag
+    ports:
+      - "3100:3000"
+    volumes:
+      - ".:/client"
+      - "/client/node_modules"
+    environment:
+      - FAST_REFRESH=false
